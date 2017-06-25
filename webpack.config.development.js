@@ -145,7 +145,7 @@ export default merge(baseConfig, {
     hot: true,
     inline: true,
     historyApiFallback: true,
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: [path.join(__dirname, 'dist'), path.join(__dirname, 'assets')],
     publicPath,
     setup () {
       if (process.env.START_HOT) {

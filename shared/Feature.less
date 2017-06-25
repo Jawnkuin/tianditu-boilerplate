@@ -1,0 +1,26 @@
+@import "./base.less";
+
+.Feature{
+  max-width: 900px;
+  display: flex;
+  margin: 30px auto;
+  justify-content: space-around;
+  background: @default;
+  .FeatureLeft{
+    padding: 25px 45px;
+    flex: 1 auto auto;
+    >img{
+      width: 400px;
+      height: 250px;
+    }
+  }
+  .FeatureRight{
+    padding: 25px 45px;
+    flex: 3 auto auto;
+  }
+}
+
+.Feature:nth-child(even) {
+  flex-direction: row-reverse;
+  background: @default-darken-5;
+}

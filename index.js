@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import MainPage from './components/MainPage';
+import IndexRouter from './containers/router';
+import './shared/style.less';
 
-render((<MainPage />), document.getElementById('root'));
+render((<IndexRouter />), document.getElementById('root'));

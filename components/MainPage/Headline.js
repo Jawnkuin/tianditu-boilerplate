@@ -1,5 +1,6 @@
 import React from 'react';
 import { Icon, Carousel, Card } from 'antd';
+import { Link } from 'react-router';
 // import PropTypes from 'prop-types';
 import styles from './Headline.less';
 
@@ -9,14 +10,16 @@ const Headline = () => (
       <h1>数字南靖</h1>
       <span>创新地理信息服务</span>
       <span>助力智慧南靖建设</span>
-      <button className="link-button">
-        <div>
-          <Icon type="search" />体验数字南靖
-        </div>
-      </button>
+      <Link to="/map">
+        <button className="link-button">
+          <div>
+            <Icon type="search" />体验数字南靖
+          </div>
+        </button>
+      </Link>
     </div>
     <div className={styles.ThemeMap}>
-      <Carousel autoplay={false}>
+      <Carousel autoplay={false} style={{ overflow: 'hidden' }}>
         <Card
           bodyStyle={{ padding: 0 }}
           bordered={false}

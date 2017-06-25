@@ -6,7 +6,7 @@ import path from 'path';
 import webpack from 'webpack';
 
 export const theme = {
-  '@primary-color': '#3D365D'
+  '@primary-color': '#373277'
 };
 
 export default {

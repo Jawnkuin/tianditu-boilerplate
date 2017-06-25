@@ -1,4 +1,4 @@
-@import "../../shared/base.less";
+@import "./base.less";
 
 .HeaderWrapper{
   z-index: 10;
@@ -33,6 +33,20 @@
       button{
         margin: 5px;
       }
+    }
+  }
+  .Menu{
+    color: @primary-fade-80;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    button{
+      background: @default;
+    }
+    button:hover,button:focus{
+      color: @default;
+      background: @raised-lighten-10;
+      border: none;
     }
   }
 
