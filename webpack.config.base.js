@@ -29,7 +29,7 @@ export default {
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
     modules: [
-      path.join(__dirname),
+      path.resolve(__dirname),
       'node_modules'
     ]
   },

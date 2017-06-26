@@ -1,0 +1,31 @@
+@import "../../shared/base.less";
+
+.ThematicContent{
+  max-width: 900px;
+  margin: 0px auto;
+  #contentTitle{
+    padding: 10px 0;
+    border-bottom: 1px solid @decline-lighten-60;
+    justify-content: space-between;
+  }
+  #contentItems{
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  #contentArticle{
+    padding: 15px;
+    min-height: 700px;
+    display: inline-block;
+    text-align: left;
+    img{
+      max-width: 80%;
+      max-height: 500px;
+    }
+  }
+  .addMore{
+    button{
+      display: block;
+      margin: 0px auto;
+    }
+  }
+}

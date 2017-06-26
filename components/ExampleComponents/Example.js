@@ -1,5 +1,5 @@
-import React, {Component, PropTypes} from 'react';
-import {Button, Alert} from 'antd';  // 引入antd的组件
+import React, { Component, PropTypes } from 'react';
+import { Button, Alert } from 'antd';  // 引入antd的组件
 import styles from './Example.less'; // 引入样式表
 
 class Example extends Component {
@@ -22,7 +22,7 @@ class Example extends Component {
   // 自定义函数 修改state添加员工
   handleAddEmployee () {
     this.setState(
-      {curEmployees: this.state.curEmployees + 1}
+      { curEmployees: this.state.curEmployees + 1 }
     );
   }
 

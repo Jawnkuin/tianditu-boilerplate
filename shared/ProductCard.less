@@ -1,0 +1,59 @@
+@import "./base.less";
+
+.ProductCard{
+  margin: 15px 0;
+  width: 430px;
+  height: 250px;
+  .ant-card-body{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    .imgbox{
+      width: 40%;
+      img{
+        height: 250px;
+      }
+    }
+    .detailbox{
+      background: @default;
+      flex: 1 0 200px;
+      padding: 15px 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      h3{
+        margin: 10px;
+        line-height: 1;
+        max-height: 3em;
+        overflow: hidden; 
+      }
+
+      h4{
+        margin: 10px;
+        line-height: 1.5;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        max-height: 4.5em;
+        color: @decline-lighten-20;
+      } 
+
+      .cardActions{
+        bottom: 0px;
+        left: 0px;
+        justify-content: space-between;
+        .ant-btn{
+          color:@decline-lighten-40;
+        }
+        .ant-btn:hover{
+          color:@primary-fade-80;
+        }
+        p {
+          padding: 5px 10px;
+          color:@decline-lighten-40;
+        }
+      }
+      
+    }
+  }
+}

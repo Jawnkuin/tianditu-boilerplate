@@ -4,7 +4,7 @@ import Header from './Header';
 import Footer from './Footer';
 
 const Frame = ({ children }) => (
-  <div>
+  <div style={{ paddingTop: 100 }}>
     <Header />
     {children}
     <Footer />

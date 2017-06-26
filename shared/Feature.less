@@ -1,14 +1,18 @@
 @import "./base.less";
 
+.FeatureWrapper{
+  background: @default;
+  padding: 20px;
+}
 .Feature{
-  max-width: 900px;
+  max-width: 1200px;
   display: flex;
   margin: 30px auto;
-  justify-content: space-around;
-  background: @default;
+  flex-flow: row wrap;
+  justify-content: space-between;
   .FeatureLeft{
     padding: 25px 45px;
-    flex: 1 auto auto;
+    flex: 1 1 400px;
     >img{
       width: 400px;
       height: 250px;
@@ -16,11 +20,18 @@
   }
   .FeatureRight{
     padding: 25px 45px;
-    flex: 3 auto auto;
+    flex: 3 0 450px;
+    p{
+      line-height: 4rem;
+      font-size: 1.8rem;
+      color: @decline-lighten-20;
+    }
   }
 }
 
-.Feature:nth-child(even) {
-  flex-direction: row-reverse;
+.FeatureWrapper:nth-child(even) {
+  >.Feature{
+    flex-direction: row-reverse;
+  }
   background: @default-darken-5;
 }
