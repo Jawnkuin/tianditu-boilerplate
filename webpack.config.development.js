@@ -136,7 +136,7 @@ export default merge(baseConfig, {
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: './index.html'
+      template: './index-development.html'
     })
   ],
   target: 'web',

@@ -19,7 +19,7 @@ export default {
   },
 
   output: {
-    path: path.join(__dirname, 'app'),
+    path: path.join(__dirname, 'dist'),
     filename: '[name].js'
   },
 
@@ -36,5 +36,21 @@ export default {
 
   plugins: [
     new webpack.NamedModulesPlugin()
-  ]
+  ],
+
+  externals: {
+    ol: {
+      root: 'ol',
+      commonjs2: 'ol',
+      commonjs: 'ol',
+      amd: 'ol',
+      umd: 'ol'
+    },
+
+    react: 'React',
+    'react-dom': 'ReactDOM'
+
+
+  }
+
 };

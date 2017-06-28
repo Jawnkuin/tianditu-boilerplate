@@ -7,46 +7,52 @@
 import path from 'path';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 import merge from 'webpack-merge';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import BabiliPlugin from 'babili-webpack-plugin';
-import baseConfig from './webpack.config.base';
+import CompressionPlugin from 'compression-webpack-plugin';
+import baseConfig, { theme } from './webpack.config.base';
 
 export default merge(baseConfig, {
   devtool: 'cheap-module-source-map',
 
-  entry: ['babel-polyfill', './index.js'],
+  entry: './index.js', // ['babel-polyfill', './index.js'],
 
   output: {
     path: path.join(__dirname, 'dist'),
-    publicPath: '/dist/'
+    filename: '[name]-[hash].min.js',
+    publicPath: './dist/'
   },
 
   module: {
     rules: [
-      // Pipe other styles through css modules and append to style.css
-      {
-        test: /^((?!\.global).)*\.css$/,
-        use: ExtractTextPlugin.extract({
-          use: {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              importLoaders: 1,
-              localIdentName: '[name]__[local]__[hash:base64:5]'
-            }
-          }
-        })
-      },
       // Pipe other less styles through css modules and append to style.css
       {
+        test: /node_modules\/.*\.less$/,
+        use: ExtractTextPlugin.extract({
+          use: [
+            {
+              loader: 'css-loader'
+            },
+            {
+              loader: 'less-loader',
+              options: {
+                modifyVars: theme
+              }
+            }
+          ]
+        })
+      },
+      {
         test: /\.less$/,
+        exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
           use: [
             {
               loader: 'css-loader',
               options: {
                 modules: true,
+                sourceMap: true,
                 importLoaders: 1,
                 localIdentName: '[local]'
               }
@@ -125,17 +131,31 @@ export default merge(baseConfig, {
     /**
      * Babli is an ES6+ aware minifier based on the Babel toolchain (beta)
      */
-    new BabiliPlugin(),
+    // new BabiliPlugin(),
 
-    new ExtractTextPlugin('[name].css'),
+    new ExtractTextPlugin('[name]-[hash].min.css'),
+
+    new webpack.optimize.ModuleConcatenationPlugin(),
+
+    new UglifyJSPlugin({
+      sourceMap: true
+    }),
 
     /**
      * Dynamically generate index.html page
      */
     new HtmlWebpackPlugin({
-      filename: './index.html',
-      template: './index.html',
-      inject: false
+      filename: '../index.html',
+      template: './index-development.html',
+      inject: 'body'
+    }),
+
+    new CompressionPlugin({
+      asset: '[path].gz[query]',
+      algorithm: 'gzip',
+      test: /\.(css|js|html)$/,
+      threshold: 10240,
+      minRatio: 0.8
     })
   ],
   target: 'web'
