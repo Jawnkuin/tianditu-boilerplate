@@ -14,7 +14,7 @@ app.use('/dist', express.static(path.join(__dirname, './dist')));
 app.use('/imgs', express.static(path.join(__dirname, './assets/imgs')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './index.html'));
+  res.sendFile(path.join(__dirname, './dist/index.html'));
 });
 
 app.listen(port, () => {

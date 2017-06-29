@@ -62,58 +62,13 @@ export default merge(baseConfig, {
             }
           ]
         })
-      },
-      {
-        test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
-        use: {
-          loader: 'url-loader',
-          options: {
-            limit: 10000,
-            mimetype: 'application/font-woff'
-          }
-        }
-      },
-      {
-        test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
-        use: {
-          loader: 'url-loader',
-          options: {
-            limit: 10000,
-            mimetype: 'application/font-woff'
-          }
-        }
-      },
-      {
-        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        use: {
-          loader: 'url-loader',
-          options: {
-            limit: 10000,
-            mimetype: 'application/octet-stream'
-          }
-        }
-      },
-      {
-        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-        use: 'file-loader'
-      },
-      {
-        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        use: {
-          loader: 'url-loader',
-          options: {
-            limit: 10000,
-            mimetype: 'image/svg+xml'
-          }
-        }
-      },
-      {
-        test: /\.(?:ico|gif|png|jpg|jpeg|webp)$/,
-        use: 'url-loader'
       }
     ]
   },
-
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM'
+  },
   plugins: [
     /**
      * Create global constants which can be configured at compile time.
@@ -145,8 +100,8 @@ export default merge(baseConfig, {
      * Dynamically generate index.html page
      */
     new HtmlWebpackPlugin({
-      filename: '../index.html',
-      template: './index-development.html',
+      filename: './index.html',
+      template: './index.production.html',
       inject: 'body'
     }),
 

@@ -3,9 +3,19 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      (function() {
+        if (!process.env.HOT) {
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = '../dist/talk.css';
+          // HACK: Writing the script path should be done with webpack
+          document.getElementsByTagName('head')[0].appendChild(link);
+        }
+      }());
+    </script>
     <script src="http://cdn.bootcss.com/react/15.5.4/react.min.js"></script>
     <script src="http://cdn.bootcss.com/react/15.5.4/react-dom.min.js"></script>
-    <!--script src="http://cdn.bootcss.com/openlayers/4.2.0/ol.js"></script-->
     <title>数字南靖</title>
   </head>
   <body>
